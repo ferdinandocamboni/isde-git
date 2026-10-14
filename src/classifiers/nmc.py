@@ -1,5 +1,5 @@
 import numpy as np
-from sklearn.metrics.pairwise import euclidean_distances
+from sklearn.metrics import pairwise_distances
 
 
 class NMC(object):
