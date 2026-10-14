@@ -47,5 +47,14 @@ class NMC(object):
         self._centroids = np.array(centroids_list)
         pass
 
-    def predict(self, xts):
-        pass
+    def predict(xts, centroids):
+        dist = pairwise_distances(xts, centroids)
+        ypred = np.argmin(dist, axis=1)
+        return ypred
+
+    ypred = predict(xts, centroids)
+    print(ypred)
+    print(yts)
+
+    print("error: ", np.mean(ypred != yts))
+    pass
