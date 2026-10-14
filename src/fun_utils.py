@@ -1,28 +1,20 @@
 from pandas import read_csv
 import numpy as np
 
+import pandas as pd
+import numpy as np
 
-def load_data(filename):
-    """
-    Load data from a csv file
 
-    Parameters
-    ----------
-    filename : string
-        Filename to be loaded.
-
-    Returns
-    -------
-    X : ndarray
-        the data matrix.
-
-    y : ndarray
-        the labels of each sample.
-    """
-    data = read_csv(filename)
+def load_mnist(csv_filename):
+    """Load the MNIST dataset."""
+    # Carica i dati dal file CSV
+    data = pd.read_csv(csv_filename)
     z = np.array(data)
+
+    # Estrae le etichette (prima colonna) e le immagini (restanti colonne)
     y = z[:, 0]
     X = z[:, 1:]
+
     return X, y
 
 
