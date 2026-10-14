@@ -26,9 +26,16 @@ def load_data(filename):
     return X, y
 
 
-def split_data(x, y, tr_fraction=0.5):
-    """
-    Split the data x, y into two random subsets
+def split_data(x, y, fract_tr=0.5):
+    #Split the data x, y into two random subsets
 
-    """
-    pass
+    idx = np.array(range(x.shape[0]))
+    np.random.shuffle(idx)
+    ntr = int(x.shape[0]*fract_tr)
+
+    xtr = x[idx[0:ntr], :]
+    ytr = y[idx[0:ntr]]
+    xts = x[idx[ntr:], :]
+    yts = y[idx[ntr:]]
+
+    return xtr, ytr, xts, yts
