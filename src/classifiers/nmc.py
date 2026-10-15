@@ -49,5 +49,6 @@ class NMC(object):
 
     def predict(self, xts):
         dist = pairwise_distances(xts, self._centroids)
-        ypred = np.argmin(dist, axis=1)
+        closest_indices = np.argmin(dist, axis=1)
+        ypred = self._class_labels[closest_indices]
         return ypred
