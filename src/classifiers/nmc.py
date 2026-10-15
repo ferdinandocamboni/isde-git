@@ -35,7 +35,7 @@ class NMC(object):
         return self._class_labels
 
     def fit(self, xtr, ytr):
-        self.class_labels = np.unique(ytr)
+        self._class_labels = np.unique(ytr)
 
         centroids_list = []
 
@@ -44,17 +44,10 @@ class NMC(object):
             x_current = xtr[indices, :]
             centroid_c = np.mean(x_current, axis=0)
             centroids_list.append(centroid_c)
-        self._centroids = np.array(centroids_list)
-        pass
 
-    def predict(xts, centroids):
-        dist = pairwise_distances(xts, centroids)
+        self._centroids = np.array(centroids_list)
+
+    def predict(self, xts):
+        dist = pairwise_distances(xts, self._centroids)
         ypred = np.argmin(dist, axis=1)
         return ypred
-
-    ypred = predict(xts, centroids)
-    print(ypred)
-    print(yts)
-
-    print("error: ", np.mean(ypred != yts))
-    pass
