@@ -5,7 +5,7 @@ import pandas as pd
 import numpy as np
 
 
-def load_mnist(csv_filename):
+def load_data(csv_filename):
     """Load the MNIST dataset."""
     # Carica i dati dal file CSV
     data = pd.read_csv(csv_filename)
